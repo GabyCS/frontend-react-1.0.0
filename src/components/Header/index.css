@@ -1,0 +1,25 @@
+.App-header {
+  height: 54px;
+}
+.header-style{
+	-webkit-box-align: center;
+    align-items: center;
+    background-color: rgb(244, 245, 247);
+    box-sizing: border-box;
+    display: flex;
+    font-size: 16px;
+    font-weight: 500;
+    height: 54px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 290;
+    padding: 8px;
+}
+.title-header{
+	-webkit-box-flex: 1;
+    flex-grow: 1;
+    margin-left: 8px;
+    font-size: 16px;
+    font-weight: 500;
+}

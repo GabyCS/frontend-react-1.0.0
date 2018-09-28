@@ -8,8 +8,15 @@ class Header extends Component {
 
 	render(){
 		return(
-			<div>
-				<span>HEADER</span>
+			<div className="App-header">
+				<div className="header-style">
+					<span className="title-header">
+						<span>
+							Tus Tareas
+						</span>
+					</span>
+				</div>
+          		<h1 className="App-title">Gestor de Tareas</h1>
 			</div>
 		);
 	}
