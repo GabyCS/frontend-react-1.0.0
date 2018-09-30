@@ -4,7 +4,6 @@ const loginReducer = (state = {
 	loginError:false,
 	user:false
 }, action) =>{
-	console.log('action', action);
 	switch(action.type){
 		case "LOGIN_FECHING":
 			return {
