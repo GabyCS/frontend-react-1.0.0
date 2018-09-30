@@ -1,4 +1,5 @@
 import { iniciarSesion, cerrarSesion } from "../api/loginApi";
+import { sessionReducer, sessionService, sessionStorage  } from 'redux-react-session';
 
 export const loginFetch = () => {
     return {
@@ -8,6 +9,8 @@ export const loginFetch = () => {
 
 
 export const loginSuccess = data => {
+    sessionService.saveUser(data);
+    sessionService.saveSession({session:'jhjhjkh'+data});
     return {
         type: "LOGIN_SUCCESS",
          data: data
@@ -35,4 +38,38 @@ export function loginFetchGen(user){
     }
 }
 
+export const logoutFetch = () => {
+    return {
+        type: "LOGOUT_FECHING"
+    }
+}
 
+
+export const logoutSuccess = () => {
+    sessionService.deleteUser();
+    sessionService.deleteSession();
+    return {
+        type: "LOGOUT_SUCCESS",
+    }
+}
+
+
+export const logoutFailure = (err) => {
+    return {
+        type: "LOGOUT_FAILURE"
+    }
+}
+
+export function logoutFetchGen(user){
+    return (dispatch)=>{
+        dispatch(logoutFetch())
+        cerrarSesion(user)
+            .then((response) => {
+                dispatch(logoutSuccess())
+            })
+            .catch((err) => {
+                    dispatch(logoutFailure(err))
+                }
+            );  
+    }
+}

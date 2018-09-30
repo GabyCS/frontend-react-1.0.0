@@ -1,9 +1,10 @@
+
 const loginReducer = (state = {
 	loginFetch:false,
 	loginError:false,
-	user:''
+	user:false
 }, action) =>{
-	console.log(action);
+	console.log('action', action);
 	switch(action.type){
 		case "LOGIN_FECHING":
 			return {
@@ -11,6 +12,7 @@ const loginReducer = (state = {
 				loginFetch:true
 			}
 		case "LOGIN_SUCCESS":
+			//browserHistory.push('/')
             return {
                 ...state,
                 user:action.data,
@@ -23,6 +25,14 @@ const loginReducer = (state = {
                 loginFetch:false,
                 loginError:true,
               
+            };
+         case "LOGOUT_SUCCESS":
+			//browserHistory.push('/')
+            return {
+                ...state,
+                user:false,
+                loginFetch:false,
+                loginError:false
             };
 		default:
 

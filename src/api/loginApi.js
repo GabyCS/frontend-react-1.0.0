@@ -9,7 +9,36 @@ export const iniciarSesion = (user) => {
            },
            body: data
            }).then((response) => {
-               if( response.status === 404 || response.status === 500){
+               if( response.status === 404 || response.status === 500 || response.status === 401){
+
+               }else{
+                   return Promise.all([response, response.text()]);
+               }
+           }).then((responseJson) => {
+              let response = false;
+                if(responseJson[1]){
+                  let res_json = JSON.parse(responseJson[1]);
+                  if(res_json.err){
+                    return response;
+                  }else{
+                    return res_json.res;
+                  }
+                }else{
+                  return response;
+                }
+            }
+           );
+
+  }
+
+  export const cerrarSesion = (user) => {
+  return fetch(API_URL+"cerrarSesion", {
+           method: 'POST',
+           headers: {
+               'Content-Type': 'application/x-www-form-urlencoded',
+           },
+           }).then((response) => {
+               if( response.status === 404 || response.status === 500 || response.status === 401){
 
                }else{
                    return Promise.all([response, response.text()]);

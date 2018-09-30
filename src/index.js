@@ -1,25 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Switch } from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import {Provider} from 'react-redux';
-import Overview from './containers/Overview';
-import Header from './components/Header';
-import FormLogin from './components/FormLogin';
+import App from './App.js';
 import store from "./store";
-console.log(this.props);
+import { sessionService, sessionStorage, loadSession  } from 'redux-react-session';
+
+console.log();
+function requireAuth() {
+	console.log('user',store.getState().sessionReducer);
+	
+}
+console.log('requireAuth', requireAuth());
 ReactDOM.render(
 	<Provider store={store}>
-		<div>
-			<Header />
-			<BrowserRouter>
-				<Switch>
-					<Route exact path = '/' component={(!true)?FormLogin:''} />
-				</Switch>
-			</BrowserRouter>
-		</div>
+		<App/>
 	</Provider>, document.getElementById('root')
 );
+
+
+const mapStateToProps = (state) =>{
+  return{
+    loginReducer: state.loginReducer,
+    sessionReducer: state.sessionReducer
+
+  }
+}
 
 registerServiceWorker();
