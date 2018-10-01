@@ -1,4 +1,4 @@
-import { obtenerListadoTareas } from "../api/tareasApi";
+import { obtenerListadoTareas, crearTarea } from "../api/tareasApi";
 import { sessionReducer, sessionService, sessionStorage  } from 'redux-react-session';
 
 export const getTareasFetch = () => {
@@ -31,6 +31,40 @@ export function getTareasFetchGen(user){
             })
             .catch((err) => {
                     dispatch(getTareasFailure(err))
+                }
+            );  
+    }
+}
+
+export const crearTareaFetch = () => {
+    return {
+        type: "CREAR_TAREA_FECHING"
+    }
+}
+
+
+export const crearTareaSuccess = data => {
+    return {
+        type: "CREAR_TAREA_SUCCESS"
+    }
+}
+
+
+export const crearTareaFailure = (err) => {
+    return {
+        type: "CREAR_TAREA_FAILURE"
+    }
+}
+
+export function crearTareaFetchGen(data, user) {
+    return (dispatch)=>{
+        dispatch(crearTareaFetch())
+        crearTarea(data,user)
+            .then((response) => {
+                dispatch(crearTareaSuccess(response))
+            })
+            .catch((err) => {
+                    dispatch(crearTareaFailure(err))
                 }
             );  
     }

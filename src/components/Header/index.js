@@ -7,6 +7,7 @@ import { Button, Navbar, Nav, NavItem } from 'react-bootstrap';
 import { BrowserRouter,Redirect } from 'react-router-dom';
 import { logoutFetchGen } from '../../actions/loginActions';
 import './index.css';
+import {API_URL, APP_URL} from '../../constants'; 
 
 class Header extends Component {
 	constructor(props){
@@ -18,8 +19,7 @@ class Header extends Component {
 	}
 	render(){
 		if((this.props.checked && !this.props.authenticated && this.props.user)){
-			console.log('entro');
-			window.location='http://localhost:3000/login';
+			window.location=APP_URL+'login';
 		}
 		return(
 				<Navbar inverse collapseOnSelect brand="React-Bootstrap">

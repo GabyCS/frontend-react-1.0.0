@@ -13,6 +13,8 @@ import { FormGroup,
         Row,
         PageHeader,
         Col } from 'react-bootstrap';
+import {API_URL, APP_URL} from '../../constants'; 
+
 const wellStyles = { maxWidth: 350, margin: '0 auto 10px', marginTop:'15%' };
 const divStyles = {marginBottom:'30%'}
 const User = (user)=>{
@@ -38,7 +40,7 @@ class Login extends Component {
     }
 	render(){
         if(this.props.loginReducer.user){
-            window.location="http://localhost:3000/"
+            window.location=APP_URL;
         }
         return(
 

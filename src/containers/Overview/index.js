@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListadoTareas from '../../components/ListadoTareas';
+import MenuOpciones from '../../components/MenuOpciones';
 import './index.css';
 import { FormGroup, 
         Button, 
@@ -19,6 +20,7 @@ class Overview extends Component {
 
 	render(){
 		return(
+
 			<Grid style={wellStyles}>
 				<Row>
 					<Col sm={12} md={12} xs={12} className="text-left">
@@ -26,6 +28,9 @@ class Overview extends Component {
 					</Col>
 				</Row>
 				<Row>
+					<Col sm={12} md={12} xs={12} className="text-right">
+						<MenuOpciones/>
+					</Col>
 					<Col sm={12} md={12} xs={12}>
 						<ListadoTareas/>
 					</Col>

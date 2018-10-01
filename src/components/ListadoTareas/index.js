@@ -24,7 +24,6 @@ class ListadoTareas extends Component{
 	}
 
 	obtenerListadoTareas(user){
-		console.log('this',this);
 		this.actions.getTareasFetchGen(user);
 	}
 	abrirModalDesc (tarea) {
@@ -41,11 +40,8 @@ class ListadoTareas extends Component{
 		})
 	}
 	renderList(elements,tareas){
-		console.log('tareas render', elements);
 		let listado = tareas.tareas;
-		console.log(listado);
 		let renderListado = listado.map((tarea, index) => {
-			console.log('map', tarea);
 			//let titulo = {tarea.nombre+' <small>tarea._id</small>'}
 			return <ListGroupItem key={index} onClick={ (e) =>console.log(tarea)}>
 						<Row>
@@ -56,7 +52,6 @@ class ListadoTareas extends Component{
 						</Row>
 				</ListGroupItem>;
 		})
-		console.log('render', renderListado);
 		return renderListado;
 	}
 
@@ -67,7 +62,6 @@ class ListadoTareas extends Component{
 			// 	arrayTareas:arrayTareas
 			// })
 		}
-		console.log('props', this.props);
 		return(
 			<ListGroup>
 				{this.props.listado_tareas ? this.renderList(this, this.props.listado_tareas) :'No existen tareas' }
@@ -78,7 +72,6 @@ class ListadoTareas extends Component{
 
 
 const mapStateToProps = (state) =>{
-	console.log('state', state);
   return{
     checked: state.sessionReducer.checked,
   	authenticated: state.sessionReducer.authenticated,
